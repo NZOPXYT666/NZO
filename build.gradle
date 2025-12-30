@@ -1,5 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    // Loom 1.8 is required for 1.21.8 to avoid the "ProvidedTagBuilder" crash
+    id 'fabric-loom' version '1.8'
     id 'maven-publish'
 }
 
@@ -12,26 +13,10 @@ repositories {
 }
 
 dependencies {
-    // Downloads the official Minecraft 1.21.8 assets
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    
-    // Connects your Java code to the game's internal names
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    
-    // Uses the 0.18.4 loader you have in Mojo Launcher
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    
-    // Adds the Fabric API needed for your kit commands
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-}
-
-processResources {
-    inputs.property "version", project.version
-    filteringCharset "UTF-8"
-
-    filesMatching("fabric.mod.json") {
-        expand "version": project.version
-    }
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -42,10 +27,4 @@ java {
     withSourcesJar()
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${project.archivesBaseName}"}
-    }
 }
