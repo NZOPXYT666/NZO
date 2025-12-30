@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "enzomodkit",
+  "version": "1.0.0",
+  "name": "Enzo Mod Kit",
+  "description": "Client-side macro mod for 1.21.8",
+  "authors": ["Enzo"],
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.enzo.enzomodkit.EnzoModKit"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "1.21.8",
+    "fabric-api": "*"
+  }
+}
