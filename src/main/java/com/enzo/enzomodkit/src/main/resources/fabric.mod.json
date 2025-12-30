@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "enzomodkit",
+  "version": "${version}",
+  "name": "EnzoModKit",
+  "description": "Vanilla command-based kit saver",
+  "authors": ["Enzo"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [ "com.enzo.enzomodkit.EnzoModKit" ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21",
+    "fabric-api": "*"
+  }
+}
