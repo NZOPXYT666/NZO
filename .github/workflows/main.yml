@@ -16,9 +16,14 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          # The robot now works right here on the main page
+          # 1. Download the builder
           curl -L https://github.com/fabricmc/fabric-example-mod/raw/master/gradlew -o gradlew
           chmod +x gradlew
+          
+          # 2. Fix the missing "Wrapper" folder
+          ./gradlew wrapper
+          
+          # 3. Start the actual build
           ./gradlew build
 
       - name: Upload Result
