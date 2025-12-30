@@ -17,18 +17,11 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          # This version is the perfect match for Loom 1.8-SNAPSHOT
-          gradle-version: 8.10.2
-          # This forces the robot to ignore the "ghost" Loom 1.10.1 data
+          # This version must match your wrapper
+          gradle-version: 8.11
           cache-disabled: true
 
-      - name: Build with Gradle
-        # 'clean' deletes all the bad metadata before starting the build
-        run: gradle clean build --no-daemon
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: EnzoModKit-JAR
-          path: build/libs/*.jar
-          
+      - name: Force Clean Build
+        # This nukes the Loom 1.10.1 ghost forever
+        run: gradle clean build --no-daemon --refresh-dependencies
+        
