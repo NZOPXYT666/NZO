@@ -1,9 +1,8 @@
 plugins {
+    // 1.8-SNAPSHOT is the "magic" version for 1.21.8 on your specific GitHub runner
     id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
 }
-
-// Keep everything else the same!
 
 version = project.mod_version
 group = project.maven_group
@@ -14,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    // These pull the 1.21.8 game files from Mojang
+    // Mojang and Yarn mappings for 1.21.8
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
