@@ -15,16 +15,22 @@ jobs:
           distribution: 'temurin'
 
       - name: Build with Gradle
-        # This tells the robot to go through both EnzoModKit folders
-        working-directory: EnzoModKit/EnzoModKit
         run: |
+          # 1. This finds where your mod files actually are
+          MOD_PATH=$(find . -name "build.gradle" -exec dirname {} \;)
+          echo "Found mod in: $MOD_PATH"
+          cd "$MOD_PATH"
+          
+          # 2. This sets up the building engine
           curl -L https://github.com/fabricmc/fabric-example-mod/raw/master/gradlew -o gradlew
           chmod +x gradlew
+          
+          # 3. This starts the cooking!
           ./gradlew build
 
       - name: Upload Result
         uses: actions/upload-artifact@v4
         with:
           name: EnzoModKit-Jar
-          path: EnzoModKit/EnzoModKit/build/libs/*.jar
+          path: "**/build/libs/*.jar"
           
