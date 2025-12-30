@@ -1,36 +1,30 @@
-name: Build Enzo Mod
-on: push
+name: Build Mod
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Java 21
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Setup Stable Gradle
-        run: |
-          # Manually download and install Gradle 8.10.2
-          wget -q https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
-          unzip -q gradle-8.10.2-bin.zip
-          echo "$GITHUB_WORKSPACE/gradle-8.10.2/bin" >> $GITHUB_PATH
+      - name: Make Gradle Wrapper Executable
+        run: chmod +x gradlew
+        # This gives the robot permission to run the wrapper
 
-      - name: Build with Gradle
-        run: |
-          # Verify the version is now 8.10.2
-          gradle -v
-          # Build the mod
-          gradle build --no-daemon
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build --no-daemon
+        # The "./gradlew" part tells it to use YOUR wrapper settings
 
-      - name: Upload Result
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: EnzoModKit-Jar
+          name: EnzoModKit-JAR
           path: build/libs/*.jar
           
