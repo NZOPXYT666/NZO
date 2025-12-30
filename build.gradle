@@ -1,12 +1,12 @@
 plugins {
-    // Loom 1.9 or 1.10 is the stable standard for 1.21.8
-    id 'fabric-loom' version '1.10'
+    id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
 }
 version = project.mod_version
 group = project.maven_group
 repositories {
     maven { url = "https://maven.fabricmc.net/" }
+    maven { url = "https://maven.terraformersmc.com/releases/" }
     mavenCentral()
 }
 dependencies {
