@@ -14,13 +14,15 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Make Gradle Wrapper Executable
-        run: chmod +x gradlew
-        # This gives the robot permission to run the wrapper
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.10.2
+        # This automatically "installs" the correct Gradle version for the robot
 
-      - name: Build with Gradle Wrapper
-        run: ./gradlew build --no-daemon
-        # The "./gradlew" part tells it to use YOUR wrapper settings
+      - name: Build with Gradle
+        run: gradle build --no-daemon
+        # Now we use the standard "gradle" command because the step above fixed the version
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
