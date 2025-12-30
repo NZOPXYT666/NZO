@@ -1,10 +1,10 @@
 plugins {
-    id 'fabric-loom' version '1.8-SNAPSHOT'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
     id 'maven-publish'
 }
-// Changing the group name slightly to "enzo.mod" forces a fresh metadata check
-version = "1.0.1"
-group = "com.enzo.mod"
+
+version = project.mod_version
+group = project.maven_group
 
 repositories {
     maven { url = "https://maven.fabricmc.net/" }
