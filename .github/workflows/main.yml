@@ -16,7 +16,7 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          # The robot is now at the front door where build.gradle is
+          # Since your files are at the front door, this works perfectly
           curl -L https://github.com/fabricmc/fabric-example-mod/raw/master/gradlew -o gradlew
           chmod +x gradlew
           ./gradlew build
