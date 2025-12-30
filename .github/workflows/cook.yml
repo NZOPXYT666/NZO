@@ -17,12 +17,14 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
+          # This version is the perfect match for Loom 1.8-SNAPSHOT
           gradle-version: 8.10.2
-          cache-disabled: true  # This stops the robot from remembering the Loom 1.10 error
+          # This forces the robot to ignore the "ghost" Loom 1.10.1 data
+          cache-disabled: true
 
       - name: Build with Gradle
+        # 'clean' deletes all the bad metadata before starting the build
         run: gradle clean build --no-daemon
-        # Adding "clean" here wipes out any ghost files from 1.10.1
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
