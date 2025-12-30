@@ -1,12 +1,12 @@
 plugins {
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    // Loom 1.10-SNAPSHOT is required to fix the FabricProvidedTagBuilder error
+    id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
 }
 version = project.mod_version
 group = project.maven_group
 repositories {
     maven { url = "https://maven.fabricmc.net/" }
-    maven { url = "https://maven.terraformersmc.com/releases/" }
     mavenCentral()
 }
 dependencies {
