@@ -1,8 +1,10 @@
 plugins {
-    // Reverting to 1.7-SNAPSHOT to stop the "Gradle 8.11 required" error
-    id 'fabric-loom' version '1.7-SNAPSHOT'
+    // This specific snapshot fixed the TagBuilder error for 1.21.8
+    id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
 }
+
+// Keep everything else the same!
 
 version = project.mod_version
 group = project.maven_group
