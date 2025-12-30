@@ -14,14 +14,19 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Setup Stable Gradle
+        run: |
+          # Manually download and install Gradle 8.10.2
+          wget -q https://services.gradle.org/distributions/gradle-8.10.2-bin.zip
+          unzip -q gradle-8.10.2-bin.zip
+          echo "$GITHUB_WORKSPACE/gradle-8.10.2/bin" >> $GITHUB_PATH
+
       - name: Build with Gradle
         run: |
-          # Force the robot to use a stable version (8.10.2) instead of 9.2
-          gradle wrapper --gradle-version 8.10.2
-          chmod +x gradlew
-          
-          # Start the actual build
-          ./gradlew build
+          # Verify the version is now 8.10.2
+          gradle -v
+          # Build the mod
+          gradle build --no-daemon
 
       - name: Upload Result
         uses: actions/upload-artifact@v4
