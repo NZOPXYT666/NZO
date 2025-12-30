@@ -1,8 +1,9 @@
 plugins {
-    // 1.8-SNAPSHOT is the patched version for 1.21.8
-    id 'fabric-loom' version '1.8-SNAPSHOT'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
     id 'maven-publish'
 }
+// Keep the rest the same as before
+
 
 // Changing the group name slightly to "enzo.mod" forces a fresh metadata check
 version = "1.0.1"
