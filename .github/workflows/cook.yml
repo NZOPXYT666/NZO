@@ -16,10 +16,11 @@ jobs:
 
       - name: Build with Gradle
         run: |
-          # This command builds the missing engine pieces for you
-          gradle wrapper
+          # Force the robot to use a stable version (8.10.2) instead of 9.2
+          gradle wrapper --gradle-version 8.10.2
           chmod +x gradlew
-          # This starts the real Minecraft mod build
+          
+          # Start the actual build
           ./gradlew build
 
       - name: Upload Result
