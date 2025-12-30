@@ -1,5 +1,4 @@
 plugins {
-    // This specific snapshot fixed the TagBuilder error for 1.21.8
     id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
 }
