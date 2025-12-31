@@ -14,14 +14,17 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Clean Ghost Data
+        # This manually deletes the folder where the "1.10.1" version is saved
+        run: rm -rf .gradle/loom-cache
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          # This version must match your wrapper
           gradle-version: 8.11
           cache-disabled: true
 
-      - name: Force Clean Build
-        # This nukes the Loom 1.10.1 ghost forever
+      - name: Final Build Attempt
+        # We use --refresh-dependencies to force a 100% fresh start
         run: gradle clean build --no-daemon --refresh-dependencies
         
