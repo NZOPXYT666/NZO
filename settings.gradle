@@ -4,4 +4,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = 'EnzoModKitV2'
+rootProject.name = 'EnzoFinal'
